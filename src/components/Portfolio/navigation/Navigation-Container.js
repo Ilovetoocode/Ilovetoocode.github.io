@@ -9,8 +9,10 @@ export default class NavigationComponent extends Component{
     <div>
         <Navlink exact to="/"> Home</Navlink>
         <Navlink  to="/About-me">About</Navlink>
+        <Navlink to="/contact">Contact</Navlink>
+        <Navlink to="/blog">Blogs</Navlink>
         <button>Blog</button>
-        {true ? <button>Add blog</button> : <button>Nothing button </button>}
+        {true ? <Navlink to="/secret">Add page</Navlink>: <button>Nothing button </button>}
     </div>
     );
     }
