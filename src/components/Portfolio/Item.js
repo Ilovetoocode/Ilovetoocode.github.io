@@ -1,5 +1,4 @@
 import React from 'react';
-import Portfolioitem from "./item";
 export default function() {
     return(
        <div> 

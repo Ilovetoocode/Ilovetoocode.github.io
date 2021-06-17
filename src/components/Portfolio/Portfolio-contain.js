@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import item from "./item";
+import Item from "./Item";
 export default class Portfoliocontainer extends Component {
     render(){
         return (
