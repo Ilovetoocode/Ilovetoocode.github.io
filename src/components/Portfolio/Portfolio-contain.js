@@ -14,11 +14,6 @@ this.handlePageTitleUpdate = this.handlePageTitleUpdate.bind(this);
         return <Item title={items.title}/>;
     })
     }
-    handlePageTitleUpdate(){
-        this.setState({
-            pageTitle:"AAAAAAAAAAAA"
-        })
-    }
     render(){
         return (
             <div>
