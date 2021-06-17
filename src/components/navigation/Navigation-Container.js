@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import React, {Navlink} from 'react-router-dom'
+import {Navlink} from 'react-router-dom'
 export default class NavigationComponent extends Component{
     constructor(){
         super();
