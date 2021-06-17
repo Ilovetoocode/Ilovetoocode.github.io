@@ -6,11 +6,18 @@ export default class Portfoliocontainer extends Component {
 
         console.log("The container is ready");
     }
+    Items(){
+    const data=["Lorem", "Ipsum","Sit","Amet"];
+
+    return data.map(items => {
+        return <Item />;
+    })
+    }
     render(){
         return (
             <div>
                 <h2>Insert content here</h2>
-                <Item />
+                {this.Item()}
             </div>
         )
     }
