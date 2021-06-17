@@ -3,14 +3,13 @@ import Item from "./Item";
 export default class Portfoliocontainer extends Component {
     constructor(){
         super();
-
-        console.log("The container is ready");
+this.state = {
+    data: [{title: "Lorem" }, {title:"Ipsum"},{title: "Sit"},{title: "Amet"}]
+}
     }
     Items(){
-    const data=["Lorem", "Ipsum","Sit","Amet"];
-
-    return data.map(items => {
-        return <Item title={items}/>;
+    return this.state.data.map(items => {
+        return <Item title={items.title}/>;
     })
     }
     render(){
