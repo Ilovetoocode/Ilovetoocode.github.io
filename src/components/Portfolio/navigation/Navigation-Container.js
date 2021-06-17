@@ -11,8 +11,7 @@ export default class NavigationComponent extends Component{
         <button>Contact</button>
         <button>About</button>
         <button>Blog</button>
-        <button>Add blog</button>
-        <button>Nothing button </button>
+        {true ? <button>Add blog</button> : <button>Nothing button </button>}
     </div>
     );
     }
