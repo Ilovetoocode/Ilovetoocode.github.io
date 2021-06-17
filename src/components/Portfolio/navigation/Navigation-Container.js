@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import React, {Navlink} from 'react-router-dom'
 export default class NavigationComponent extends Component{
     constructor(){
         super();
@@ -7,9 +7,8 @@ export default class NavigationComponent extends Component{
     render(){
     return(
     <div>
-        <button>Home</button>
-        <button>Contact</button>
-        <button>About</button>
+        <Navlink exact to="/"> Home</Navlink>
+        <Navlink  to="/About-me">About</Navlink>
         <button>Blog</button>
         {true ? <button>Add blog</button> : <button>Nothing button </button>}
     </div>
