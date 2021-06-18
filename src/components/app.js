@@ -21,8 +21,8 @@ export default class App extends Component {
       <Router>
         <div>
        <Switch>
-         <Route exact path="/" component={home} />
-         <Route path="/About-me" component={about} />
+         <Route exact path="/" component={home}/>
+         <Route path="/About-me" component={about}/>
          <Route path="/contact" component={Contact}/>
          <Route path="/secret" component={add}/>
          <Route path="/blog" component={Blogs}/>

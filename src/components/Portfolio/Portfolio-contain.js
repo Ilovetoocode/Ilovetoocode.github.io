@@ -5,7 +5,10 @@ export default class Portfoliocontainer extends Component {
         super();
 this.state = {
     pageTitle:"This is my portfolio",
-    data: [{title: "Neocities nonesense", category: "Web stuff"}, {title:"My paintings", category:"Physical"},{title: "Youtube",category:"Web stuff"},{title: "Amet",category:"Test4"}]
+    data: [{title: "Neocities nonesense", category: "Web-stuff", slug: 'neocities'}, 
+    {title:"My paintings", category:"Physical", slug:"Paint"},
+    {title: "Youtube",category:"Web stuff", slug:"Video"},
+    {title: "Eagle award",category:"Accomplishment", slug:"Eagle"}]
 }
 this.handleFilter=this.handleFilter.bind(this);
     }
@@ -19,10 +22,13 @@ this.handleFilter=this.handleFilter.bind(this);
 }
     Items(){
     return this.state.data.map(items => {
-        return <Item title={items.title}/>;
+        return <Item title={items.title} slug={items.slug}/>;
     })
     }
     render(){
+        if (this.state.isLoading){
+            return <div>Loading...</div>
+        }
         return (
             <div>
                 <h2>Some stuff I have done</h2>
