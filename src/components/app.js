@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import moment from "moment";
+import axios from "axios";
 import {
-  BrowserRouter as Router,Switch, Route} from "react-router-dom";
+  BrowserRouter as Router,Switch, Route} from "react-router-dom"
 import Portfoliocontainer from './Portfolio/Portfolio-contain';
-<<<<<<< HEAD
-import NavigationContainer from "./navigation/Navigation-Container";
-import home from './Pages/home';
-import about from './Pages/about';
-import Contact from './Pages/Contact'
-=======
 import NavigationContainer from './navigation/Navigation-Container';
 import home from "./Pages/home"
 import Failure from"./Pages/error"
 import about from "./Pages/about"
 import Contact from "./Pages/Contact"
->>>>>>> 584a6bd0b87c55f6b9fcc7c782956962911178c1
 import add from "./Pages/Addblog"
 import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 export default class App extends Component {
+  getportfolioitems(){
+    axios.get('https://whoami.devcamp.space/portfolio/portfolio_items')
+  .then(function (response) {
+    console.log(response);
+  })
+  }
   render() {
     return (
       <div className='app'>
@@ -28,10 +28,6 @@ export default class App extends Component {
         {moment().format('MMMM Do YYYY, h:mm:ss a')}</div>
       <Router>
         <div>
-<<<<<<< HEAD
-        <NavigationContainer/>
-=======
->>>>>>> 584a6bd0b87c55f6b9fcc7c782956962911178c1
        <Switch>
          <Route exact path="/" component={home}/>
          <Route path="/About-me" component={about}/>
