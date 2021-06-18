@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navlink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 export default class NavigationComponent extends Component{
     constructor(){
         super();
@@ -7,11 +7,11 @@ export default class NavigationComponent extends Component{
     render(){
     return(
     <div>
-        <Navlink exact to="/"> Home</Navlink>
-        <Navlink  to="/About-me">About</Navlink>
-        <Navlink to="/contact">Contact</Navlink>
-        <Navlink to="/blog">Blogs</Navlink>
-        {true ? <button> Add page </button> : <button>Nothing button </button>}
+        <NavLink exact to="/"> Home</NavLink>
+        <NavLink  to="/About-me">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/blog">Blogs</NavLink>
+        {true ? <NavLink to="/secret"> Add page</NavLink> : <button>Nothing button </button>}
     </div>
     );
     }

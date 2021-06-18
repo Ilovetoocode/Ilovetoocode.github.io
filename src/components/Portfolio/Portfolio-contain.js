@@ -5,7 +5,7 @@ export default class Portfoliocontainer extends Component {
         super();
 this.state = {
     pageTitle:"This is my portfolio",
-    data: [{title: "Lorem", category: "Test1"}, {title:"Ipsum", category:"Test2"},{title: "Sit",category:"Test3"},{title: "Amet",category:"Test4"}]
+    data: [{title: "Neocities nonesense", category: "Web stuff"}, {title:"My paintings", category:"Physical"},{title: "Youtube",category:"Web stuff"},{title: "Amet",category:"Test4"}]
 }
 this.handleFilter=this.handleFilter.bind(this);
     }
@@ -25,10 +25,10 @@ this.handleFilter=this.handleFilter.bind(this);
     render(){
         return (
             <div>
-                <h2>Insert content here</h2>
-                {this.Item()}
-                <button onClick={() => this.handleFilter('Test1')}>Test1</button>
-                <button onClick={() => this.handleFilter('Test2')}>Test2</button>
+                <h2>Some stuff I have done</h2>
+                {this.Items()}
+                <button onClick={() => this.handleFilter('Physical')}>Physical</button>
+                <button onClick={() => this.handleFilter('Web stuff')}>Web stuff</button>
                 <button onClick={() => this.handleFilter('Test3')}>Test3</button>
                 <button onClick={() => this.handleFilter('Test4')}>Test4</button>
                 </div>
