@@ -5,6 +5,7 @@ import {
 import Portfoliocontainer from './Portfolio/Portfolio-contain';
 import NavigationContainer from './navigation/Navigation-Container';
 import home from "./Pages/home"
+import Failure from"./Pages/error"
 import about from "./Pages/about"
 import Contact from "./Pages/Contact"
 import add from "./Pages/Addblog"
@@ -26,8 +27,8 @@ export default class App extends Component {
          <Route path="/contact" component={Contact}/>
          <Route path="/secret" component={add}/>
          <Route path="/blog" component={Blogs}/>
-         <Route path="/portfolio/:slug" component={PortfolioDetail}>
-         </Route>
+         <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
+         <Route component={Failure}/>
        </Switch>
         </div>
       </Router>
