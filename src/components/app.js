@@ -3,28 +3,43 @@ import moment from "moment";
 import {
   BrowserRouter as Router,Switch, Route} from "react-router-dom";
 import Portfoliocontainer from './Portfolio/Portfolio-contain';
+<<<<<<< HEAD
 import NavigationContainer from "./navigation/Navigation-Container";
 import home from './Pages/home';
 import about from './Pages/about';
 import Contact from './Pages/Contact'
+=======
+import NavigationContainer from './navigation/Navigation-Container';
+import home from "./Pages/home"
+import Failure from"./Pages/error"
+import about from "./Pages/about"
+import Contact from "./Pages/Contact"
+>>>>>>> 584a6bd0b87c55f6b9fcc7c782956962911178c1
 import add from "./Pages/Addblog"
-import Blogs from './Pages/Blogs';
+import Blogs from "./Pages/Blogs"
+import PortfolioDetail from"./Portfolio/portfolio-detail";
 export default class App extends Component {
   render() {
     return (
       <div className='app'>
+      <NavigationContainer />
       <h1>The geek crowd</h1>
         <div>
         {moment().format('MMMM Do YYYY, h:mm:ss a')}</div>
       <Router>
         <div>
+<<<<<<< HEAD
         <NavigationContainer/>
+=======
+>>>>>>> 584a6bd0b87c55f6b9fcc7c782956962911178c1
        <Switch>
-         <Route exact path="/" component={home} />
-         <Route path="/About-me" component={about} />
+         <Route exact path="/" component={home}/>
+         <Route path="/About-me" component={about}/>
          <Route path="/contact" component={Contact}/>
          <Route path="/secret" component={add}/>
          <Route path="/blog" component={Blogs}/>
+         <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
+         <Route component={Failure}/>
        </Switch>
         </div>
       </Router>
