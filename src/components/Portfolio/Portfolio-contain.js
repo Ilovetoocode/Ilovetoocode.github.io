@@ -26,6 +26,9 @@ getPortfolioItems(){
     .get("https://whoami.devcamp.space/portfolio/portfolio_items")
     .then(response => {
     console.log("response data", response);
+    this.setState({
+        data: response.data.portfolio_items
+    })
     })
     .catch(error => {
     console.log(error);
@@ -33,15 +36,9 @@ getPortfolioItems(){
     }
     Items(){
     return this.state.data.map(items => {
-        return <Item title={items.title} slug={items.slug}/>;
+        console.log("item data", items);
+        return <Item title={items.name} url={items.url} slug={items.id}/>;
     })
-    }
-    portfolioitems(){
-        return this.state.data.map(Item => {
-            return(
-                <porfolioitem title={Item.title} slug={Item.slug} />
-            );
-        });
     }
     componentDidMount(){
         this.getPortfolioItems();
