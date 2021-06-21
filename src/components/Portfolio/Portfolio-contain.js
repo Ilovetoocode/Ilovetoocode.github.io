@@ -39,9 +39,7 @@ getPortfolioItems(){
         console.log("item data", items);
         return (
         <Item key={items.id}
-        title={items.name} 
-        url={items.url} 
-        slug={items.id}/>);
+           items={items}/>);
     })
     }
     componentDidMount(){
