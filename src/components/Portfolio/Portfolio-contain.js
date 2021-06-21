@@ -37,7 +37,11 @@ getPortfolioItems(){
     Items(){
     return this.state.data.map(items => {
         console.log("item data", items);
-        return <Item title={items.name} url={items.url} slug={items.id}/>;
+        return (
+        <Item key={items.id}
+        title={items.name} 
+        url={items.url} 
+        slug={items.id}/>);
     })
     }
     componentDidMount(){
