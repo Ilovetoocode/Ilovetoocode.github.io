@@ -1,4 +1,0 @@
-id:"id"
-description:"description"
-Background image: "thumb_image_url"
-Position:"postion"

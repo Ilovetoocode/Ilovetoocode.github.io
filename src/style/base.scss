@@ -3,3 +3,7 @@ body {
     margin:0px;
     font-family: 'Share Tech Mono', monospace;
 }
+.container{
+    display:grid;
+    grid-template-columns:1fr;
+}

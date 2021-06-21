@@ -52,11 +52,13 @@ getPortfolioItems(){
         return (
             <div>
                 <h2>Some stuff I have done</h2>
-                {this.Items()}
                 <button onClick={() => this.handleFilter('Physical')}>Physical</button>
                 <button onClick={() => this.handleFilter('Web stuff')}>Web stuff</button>
                 <button onClick={() => this.handleFilter('Accomplishment')}>Awards</button>
                 <button onClick={() => this.handleFilter('Test4')}>Test4</button>
+                <div className="portfolio-items-wrap">
+                {this.Items()}
+                </div>
                 </div>
         )
     }

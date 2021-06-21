@@ -1,0 +1,7 @@
+id:"id"
+description:"description"
+Background image: "thumb_image_url"
+Position:"postion"
+
+
+{true ? <NavLink to="/secret"> Add page</NavLink> : <button>Nothing button </button>}
