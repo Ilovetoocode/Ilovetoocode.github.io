@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 export default function(props) {
 
-    const{id, description, thumb_image_url, logo}=props.items;
+    const{id, description, thumb_image_url, logo_url}=props.items;
     return(
          <div className="portfolio-item-wrap">
              <div className="portfolio-background"
@@ -10,10 +10,12 @@ export default function(props) {
                  backgroundImage:"url("+ thumb_image_url+")"
              }}
              />
-           <img src={logo}/>
-           <div>
-            {description}</div>
-           <Link to={`/portfolio/${id}`}>Link</Link>
-           </div>
+             <div  className="img-text-wrap">
+                 <div className="Logo-wrap">
+                     <img src={logo_url}/>
+                 </div>
+                 <div className="subtitle">{description}</div>
+             </div>
+             </div>
     );
 }
