@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Item from "./Item";
+import axios from "axios";
 export default class Portfoliocontainer extends Component {
     constructor(){
         super();
@@ -11,6 +12,7 @@ this.state = {
     {title: "Eagle award",category:"Accomplishment", slug:"Eagle"}]
 }
 this.handleFilter=this.handleFilter.bind(this);
+this.getPortfolioItems=this.getPortfolioItems.bind(this)
     }
     
     handleFilter(filter){
@@ -20,6 +22,17 @@ this.handleFilter=this.handleFilter.bind(this);
         })
          })
 }
+
+getPortfolioItems(){
+    axios
+    .get("https://whoami.devcamp.space/portfolio/portfolio_items")
+    .then(response => {
+    console.log("response data", response);
+    })
+    .catch(error => {
+    console.log(error);
+    });
+    }
     Items(){
     return this.state.data.map(items => {
         return <Item title={items.title} slug={items.slug}/>;
@@ -29,6 +42,7 @@ this.handleFilter=this.handleFilter.bind(this);
         if (this.state.isLoading){
             return <div>Loading...</div>
         }
+        this.getPortfolioItems();
         return (
             <div>
                 <h2>Some stuff I have done</h2>

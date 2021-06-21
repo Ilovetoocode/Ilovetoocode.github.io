@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import axios from "axios";
 import {
   BrowserRouter as Router,Switch, Route} from "react-router-dom"
 import Portfoliocontainer from './Portfolio/Portfolio-contain';
