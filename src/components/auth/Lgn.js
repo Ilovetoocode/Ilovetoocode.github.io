@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from 'axios';
 export default class Login extends Component{
     constructor(props){
         super(props)
@@ -17,7 +18,7 @@ export default class Login extends Component{
     }
 
     handleSubmit(event){
-        console.log("Handle submit", event);
+        
         event.preventDefault();
     }
     render(){
