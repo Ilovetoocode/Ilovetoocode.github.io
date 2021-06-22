@@ -11,8 +11,10 @@ export default class Login extends Component{
     return (
         <div>
             <h1>Please log in to use the dashboard</h1>
-            <form>
-                <input type="text"/>
+            <form onSubmit={this.handleSubmit}>
+                <input 
+                type="email"
+                name="email"/>
                 <input type="password"/>
             </form>
         </div>
