@@ -18,8 +18,17 @@ export default class Login extends Component{
                 placeholder="youremail@example.com"
                 value={this.state.email}
                 onChange={this.handleChange}/>
-                <input type="password"/>
+                <input type="password"
+                name="password"
+                placeholder="your password"
+                value={this.state.password}
+                onChange={this.handleChange}/>
             </form>
+            <div>
+                <button type="submit">
+                Login
+                </button>
+            </div>
         </div>
     )
     }
