@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-export default function(props) {
-
-    const{id, description, thumb_image_url, logo_url}=props.items;
+export default class Porfolioitem extends Component {
+constructor(props) {
+    super(props);
+    this.state={
+        PorfolioitemClass:""
+    };
+    }
+    handleMouseEnt(){
+this.setState({PorfolioitemClass:'img-blur'})
+    }
+    handleMouseExt(){
+        this.setState({PorfolioitemClass:''});
+        
+    }
+    render() {
+    const{id, description, thumb_image_url, logo_url}=this.props.items;
     return(
-         <div className="portfolio-item-wrap">
-             <div className="portfolio-background"
+         <div className="portfolio-item-wrap"
+         onMouseEnter={()=> this.handleMouseEnt()}
+        onMouseLeave={()=> this.handleMouseExt()}
+        >
+             <div className={"portfolio-background " + this.state.PorfolioitemClass}
              style={{
                  backgroundImage:"url("+ thumb_image_url+")"
              }}
@@ -18,4 +34,5 @@ export default function(props) {
              </div>
              </div>
     );
+            }
 }

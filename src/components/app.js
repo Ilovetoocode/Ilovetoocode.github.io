@@ -9,6 +9,7 @@ import Contact from "./Pages/Contact"
 import add from "./Pages/Addblog"
 import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
+import Auth from"./Pages/auth";
 export default class App extends Component {
   getportfolioitems(){
     axios.get('https://whoami.devcamp.space/portfolio/portfolio_items')
@@ -26,6 +27,7 @@ export default class App extends Component {
          <Route exact path="/" component={home}/>
          <Route path="/About-me" component={about}/>
          <Route path="/contact" component={Contact}/>
+         <Route path="/auth" component={Auth}/>
          <Route path="/secret" component={add}/>
          <Route path="/blog" component={Blogs}/>
          <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
