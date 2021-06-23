@@ -29,13 +29,15 @@ export default class Login extends Component{
         {withCredentials:true}
         ).then(response => {
             if (response.data.status === 'created') {
-                 console.log("Hey there trusted user")
+                 this.props.handleauth();
             } else{this.setState({errr: "Please type in the right credentials"});
+            this.props.handleauthfail();
         }
         }).catch(error =>{
             this.setState({
                 errr:"An error happened, please try again"
-            })
+            });
+            this.props.handleauthfail();
         })
         event.preventDefault();
     }
