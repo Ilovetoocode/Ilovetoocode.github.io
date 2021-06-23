@@ -30,7 +30,7 @@ export default class Login extends Component{
         ).then(response => {
             if (response.data.status === 'created') {
                  console.log("Hey there trusted user")
-            } else{this.setState({err: "Please type in the right credentials"});
+            } else{this.setState({errr: "Please type in the right credentials"});
         }
         }).catch(error =>{
             this.setState({

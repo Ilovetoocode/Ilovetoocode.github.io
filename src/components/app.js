@@ -11,11 +11,23 @@ import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
 export default class App extends Component {
-  getportfolioitems(){
-    axios.get('https://whoami.devcamp.space/portfolio/portfolio_items')
-  .then(function (response) {
-    console.log(response);
-  })
+  constructor(props){
+    super(props);
+    this.state={
+     loggedInState:"Not_in"
+    }
+    this.handlelogin=this.handlelogin.bind(this);
+    this.handlefaillogin=this.handlefaillogin.bind(this);
+  }
+  handlelogin(){
+    this.setState({
+      loggedInState:"in"
+    })
+  }
+  handlefaillogin(){
+    this.setState({
+      loggedInState:"Not_in"
+    })
   }
   render() {
     return (
@@ -27,7 +39,13 @@ export default class App extends Component {
          <Route exact path="/" component={home}/>
          <Route path="/About-me" component={about}/>
          <Route path="/contact" component={Contact}/>
-         <Route path="/auth" component={Auth}/>
+         <Route path="/auth" 
+         render={props => (
+         <Auth
+         {...props} 
+         handlelogin={this.handlelogin}
+         handlefaillogin={this.handlefaillogin}/>)}
+         />
          <Route path="/secret" component={add}/>
          <Route path="/blog" component={Blogs}/>
          <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
