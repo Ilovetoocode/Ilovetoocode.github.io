@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import {
   BrowserRouter as Router,Switch, Route} from "react-router-dom"
 import NavigationContainer from './navigation/Navigation-Container';
@@ -20,6 +21,7 @@ export default class App extends Component {
     }
     this.handlelogin=this.handlelogin.bind(this);
     this.handlefaillogin=this.handlefaillogin.bind(this);
+    this.handlelogout=this.handlelogout.bind(this);
   }
   handlelogin(){
     this.setState({
@@ -27,6 +29,11 @@ export default class App extends Component {
     })
   }
   handlefaillogin(){
+    this.setState({
+      loggedInState:"Not_in"
+    })
+  }
+  handlelogout(){
     this.setState({
       loggedInState:"Not_in"
     })
@@ -63,7 +70,8 @@ export default class App extends Component {
   render() {
     return (
       <div className='Contain'>
-      <NavigationContainer loggedInState={this.state.loggedInState}/>
+      <NavigationContainer loggedInState={this.state.loggedInState}
+      handlelogout={this.handlelogout}/>
       <h2>{this.state.loggedInState}</h2>
       <Router>
         <div>
