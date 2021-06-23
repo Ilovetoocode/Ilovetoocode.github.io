@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   BrowserRouter as Router,Switch, Route} from "react-router-dom"
 import NavigationContainer from './navigation/Navigation-Container';
@@ -10,6 +11,7 @@ import add from "./Pages/Addblog"
 import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
+import No from"./Pages/Dead_pages/Nope";
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -29,10 +31,39 @@ export default class App extends Component {
       loggedInState:"Not_in"
     })
   }
+  Chkn(){
+    return axios.get("https://api.devcamp.space/logged_in",{withCredentials: true}).then(response =>{
+      const loggedIn =response.data.logged_in;
+      const loggedInState = this.state.loggedInState;
+      if (loggedIn && loggedInState === "in"){
+        return loggedIn;
+      }else if (loggedIn && loggedInState === "Not_in"){
+        this.setState({
+          loggedInState:"in"
+        })
+      }
+      else if (!loggedIn && loggedInState === "in"){
+        this.setState({
+          loggedInState:"Not_in"
+        })
+      }
+    })
+    .catch(error =>{
+      console.log("An error occoured",error)
+    })
+  }
+  componentDidMount(){
+    this.Chkn();
+  }
+  Pgaccs(){
+    return [
+      <Route path="/secret" component={add}/>
+    ]
+  }
   render() {
     return (
       <div className='Contain'>
-      <NavigationContainer />
+      <NavigationContainer loggedInState={this.state.loggedInState}/>
       <h2>{this.state.loggedInState}</h2>
       <Router>
         <div>
@@ -47,7 +78,8 @@ export default class App extends Component {
          handlelogin={this.handlelogin}
          handlefaillogin={this.handlefaillogin}/>)}
          />
-         <Route path="/secret" component={add}/>
+         {this.state.loggedInState ==="in" ? this.Pgaccs() : null}
+         <Route path="/troll" component={No}/>
          <Route path="/blog" component={Blogs}/>
          <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
          <Route component={Failure}/>

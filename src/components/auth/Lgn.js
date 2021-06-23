@@ -37,6 +37,7 @@ export default class Login extends Component{
             this.setState({
                 errr:"An error happened, please try again"
             });
+            console.log("This is the exact error, if you are the admin, please confirm if this is because you buggered up my code again somehow, or the api end just broke.",error)
             this.props.handleauthfail();
         })
         event.preventDefault();
