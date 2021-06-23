@@ -9,6 +9,7 @@ import Failure from"./Pages/error"
 import about from "./Pages/about"
 import Contact from "./Pages/Contact"
 import add from "./Pages/Addblog"
+import portedit from "./Pages/portfolio-manage";
 import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
@@ -64,7 +65,8 @@ export default class App extends Component {
   }
   Pgaccs(){
     return [
-      <Route path="/secret" component={add}/>
+      <Route path="/secret" component={add}/>,
+      <Route path="/portfolio-edit" component={portedit}/>
     ]
   }
   render() {
@@ -72,7 +74,6 @@ export default class App extends Component {
       <div className='Contain'>
       <NavigationContainer loggedInState={this.state.loggedInState}
       handlelogout={this.handlelogout}/>
-      <h2>{this.state.loggedInState}</h2>
       <Router>
         <div>
        <Switch>

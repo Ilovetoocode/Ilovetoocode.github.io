@@ -6,7 +6,12 @@ const NavigationComponent = props => {
     const dynamLink = (route, linkText) =>{
         return(
         <div className="nav-link-wrapper">
-        <NavLink to="/secret" activeClassName="nav-link-active">Add page</NavLink>
+        <NavLink to={route} activeClassName="nav-link-active">
+        {linkText}
+        </NavLink>
+        </div>,
+        <div className="nav-link-wrapper">
+        <NavLink to="/portfolio-edit" activeClassName="nav-link-active">Add portfolio item</NavLink>
         </div>
         )
     }
@@ -36,7 +41,7 @@ const NavigationComponent = props => {
         <div className="nav-link-wrapper">
         <NavLink to="/blog" activeClassName="nav-link-active">Blogs</NavLink>
         </div>
-        {props.loggedInState === "in" ? (dynamLink("/secret", "Add")) : null}
+        {props.loggedInState === "in" ? (dynamLink("/portedit", "Add")) : null}
         </div>
         <div className="Right-side">
             Connor Walton
