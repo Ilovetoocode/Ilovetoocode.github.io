@@ -33,6 +33,7 @@ export default class App extends Component {
     return (
       <div className='Contain'>
       <NavigationContainer />
+      <h2>{this.state.loggedInState}</h2>
       <Router>
         <div>
        <Switch>
