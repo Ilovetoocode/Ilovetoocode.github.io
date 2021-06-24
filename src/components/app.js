@@ -65,8 +65,8 @@ export default class App extends Component {
   }
   Pgaccs(){
     return [
-      <Route path="/secret" component={add}/>,
-      <Route path="/portfolio-edit" component={portedit}/>
+      <Route key="blog-manager" path="/secret" component={add}/>,
+      <Route key="portfolio-manager"path="/portfolio-edit" component={portedit}/>
     ]
   }
   render() {

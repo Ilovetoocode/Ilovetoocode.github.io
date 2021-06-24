@@ -17,7 +17,7 @@ export default class Portform extends Component{
         this.Submit=this.Submit.bind(this);
     }
     Submit(event){
-        this.buildForm()
+        axios.post("https://whoami.devcamp.space/portfolio/portfolio_items",this.buildForm(),{withCredentials:true})
         event.preventDefault();
     }
     buildForm(){
