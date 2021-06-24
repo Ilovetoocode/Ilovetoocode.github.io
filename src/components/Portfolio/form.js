@@ -6,7 +6,7 @@ export default class Portform extends Component{
         this.state={
             name:"",
             description:"",
-            category:"",
+            category:"Accomplishment",
             position:"",
             url:"",
             thumb_image:"",
@@ -18,7 +18,7 @@ export default class Portform extends Component{
     }
     Submit(event){
         axios.post("https://whoami.devcamp.space/portfolio/portfolio_items",this.buildForm(),{withCredentials:true}).then(response => {
-            console.log("response", response)
+            this.props.handleformsubmit(response.data.portfolio_item);
         }).catch(error =>{
             console.log("An error occoured", error)
         })
@@ -72,7 +72,7 @@ export default class Portform extends Component{
                     onChange={this.Changer}/>
                 </div>
                 <div>
-                <input 
+                <textarea 
                     type="text"
                     name="description"
                     placeholder="describe"

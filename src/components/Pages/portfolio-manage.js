@@ -12,13 +12,15 @@ export default class Portfoliomanage extends Component{
         this.handleformerror=this.handleformerror.bind(this);
     }
     handleformsubmit(items){
-
+    this.setState({
+        portitem: [items].concat(this.state.portitem)
+    })
     }
     handleformerror(error){
         console.log("Submission error", error)
     }
     getitems(){
-    axios.get("https://whoami.devcamp.space/portfolio/portfolio_items", {withCredentials:true}).then(response => {
+    axios.get("https://whoami.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc", {withCredentials:true}).then(response => {
         console.log("response data", response);
         this.setState({
             portitem: [...response.data.portfolio_items]
