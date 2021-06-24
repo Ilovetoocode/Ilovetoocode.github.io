@@ -1,15 +1,37 @@
 import React, {Component} from "react";
+import axios from "axios";
+import Portside from "../Portfolio/port-side";
 export default class Portfoliomanage extends Component{
-    render(){
-    return (
-        <div className="port-manage-wrapper">
-        <div className="left-side">
-            <h1>Form</h1>
-            </div>
-            <div className="right-side">
-            <h1>Test</h1>
-            </div>
-        </div>
-    )
+    constructor(){
+        super();
+        this.state={
+            portitem:[]
+        };
     }
-}
+    getitems(){
+    axios.get("https://whoami.devcamp.space/portfolio/portfolio_items", {withCredentials:true}).then(response => {
+        console.log("response data", response);
+        this.setState({
+            portitem: [...response.data.portfolio_items]
+        })
+        })
+        .catch(error => {
+        console.log(error);
+        })
+        }
+        componentDidMount(){
+            this.getitems();}
+            render(){
+                return (
+                    <div className="port-manage-wrapper">
+                    <div className="left-side">
+                        <h1>Form</h1>
+                        </div>
+                        <div className="right-side">
+                        <Portside data={this.state.portitem}/>
+                        </div>
+                    </div>
+                )
+                }
+    }
+    
