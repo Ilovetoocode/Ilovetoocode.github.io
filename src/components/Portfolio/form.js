@@ -1,9 +1,74 @@
 import React, {Component} from "react";
 export default class Portform extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            name:"",
+            description:"",
+            category:"",
+            position:"",
+            url:"",
+            thumb_image:"",
+            banner_image:"",
+            logo:"",
+        }
+        this.Changer=this.Changer.bind(this);
+        this.Submit=this.Submit.bind(this);
+    }
+    Changer(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+    Submit(event){
+        console.log("submitted",event);
+        event.preventDefault();
+    }
     render(){
     return (
         <div>
-            
+            <h1>form</h1>
+            <form onSubmit={this.Submit}>
+                <div>
+                <input 
+                    type="position"
+                    name="name"
+                    placeholder="pos"
+                    value={this.state.position}
+                    onChange={this.Changer}/>
+                    <input 
+                    type="text"
+                    name="name"
+                    placeholder="portitem"
+                    value={this.state.name}
+                    onChange={this.Changer}/>
+                    <input 
+                    type="text"
+                    name="category"
+                    placeholder="categories"
+                    value={this.state.category}
+                    onChange={this.Changer}/>
+                    <input 
+                    type="url"
+                    name="name"
+                    placeholder="Link"
+                    value={this.state.url}
+                    onChange={this.Changer}/>
+                </div>
+                <div>
+                <input 
+                    type="text"
+                    name="description"
+                    placeholder="describe"
+                    value={this.state.description}
+                    onChange={this.Changer}/>
+                </div>
+                <div>
+                    <button type="submit">
+                        Save
+                        </button>
+                    </div>
+            </form>
         </div>
     )
     }
