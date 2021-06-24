@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from "axios";
 export default class Portform extends Component{
     constructor(props){
         super(props);
@@ -15,14 +16,23 @@ export default class Portform extends Component{
         this.Changer=this.Changer.bind(this);
         this.Submit=this.Submit.bind(this);
     }
+    Submit(event){
+        this.buildForm()
+        event.preventDefault();
+    }
+    buildForm(){
+        let formData = new FormData();
+        formData.append("portfolio_item[name]", this.state.name);
+        formData.append("portfolio_item[description]", this.state.description);
+        formData.append("portfolio_item[url]", this.state.url);
+        formData.append("portfolio_item[category]", this.state.category);
+        formData.append("portfolio_item[position]", this.state.position);
+        return formData;
+    }
     Changer(event){
         this.setState({
             [event.target.name]: event.target.value
         });
-    }
-    Submit(event){
-        console.log("submitted",event);
-        event.preventDefault();
     }
     render(){
     return (
@@ -31,8 +41,8 @@ export default class Portform extends Component{
             <form onSubmit={this.Submit}>
                 <div>
                 <input 
-                    type="position"
-                    name="name"
+                    type="text"
+                    name="position"
                     placeholder="pos"
                     value={this.state.position}
                     onChange={this.Changer}/>
@@ -49,8 +59,8 @@ export default class Portform extends Component{
                     value={this.state.category}
                     onChange={this.Changer}/>
                     <input 
-                    type="url"
-                    name="name"
+                    type="text"
+                    name="url"
                     placeholder="Link"
                     value={this.state.url}
                     onChange={this.Changer}/>
