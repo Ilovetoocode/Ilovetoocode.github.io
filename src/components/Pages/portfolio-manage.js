@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Portside from "../Portfolio/port-side";
+import Portform from"../Portfolio/form";
 export default class Portfoliomanage extends Component{
     constructor(){
         super();
@@ -25,7 +26,7 @@ export default class Portfoliomanage extends Component{
                 return (
                     <div className="port-manage-wrapper">
                     <div className="left-side">
-                        <h1>Form</h1>
+                        <Portform/>
                         </div>
                         <div className="right-side">
                         <Portside data={this.state.portitem}/>
