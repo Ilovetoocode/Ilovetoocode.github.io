@@ -17,7 +17,11 @@ export default class Portform extends Component{
         this.Submit=this.Submit.bind(this);
     }
     Submit(event){
-        axios.post("https://whoami.devcamp.space/portfolio/portfolio_items",this.buildForm(),{withCredentials:true})
+        axios.post("https://whoami.devcamp.space/portfolio/portfolio_items",this.buildForm(),{withCredentials:true}).then(response => {
+            console.log("response", response)
+        }).catch(error =>{
+            console.log("An error occoured", error)
+        })
         event.preventDefault();
     }
     buildForm(){
@@ -52,12 +56,14 @@ export default class Portform extends Component{
                     placeholder="portitem"
                     value={this.state.name}
                     onChange={this.Changer}/>
-                    <input 
-                    type="text"
+                    <select 
                     name="category"
-                    placeholder="categories"
                     value={this.state.category}
-                    onChange={this.Changer}/>
+                    onChange={this.Changer}>
+                    <option value="Accomplishment">Accomplishment</option>
+                    <option value="Real life">IRL</option>
+                    <option value="Web Stuff">Web Stuff</option>
+                    </select>
                     <input 
                     type="text"
                     name="url"

@@ -51,8 +51,8 @@ getPortfolioItems(){
         }
         return (
                 <div className="portfolio-items-wrap">
-                <button className="btn" onClick={() => this.handleFilter('Physical')}>Physical</button>
-                <button className="btn" onClick={() => this.handleFilter('Web stuff')}>Web stuff</button>
+                <button className="btn" onClick={() => this.handleFilter('Real life')}>IRL</button>
+                <button className="btn" onClick={() => this.handleFilter('Web Stuff')}>Web stuff</button>
                 <button className="btn" onClick={() => this.handleFilter('Accomplishment')}>Awards</button>
                 {this.Items()}
                 </div>
