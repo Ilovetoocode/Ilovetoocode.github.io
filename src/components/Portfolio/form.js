@@ -20,6 +20,7 @@ export default class Portform extends Component{
         this.Submit=this.Submit.bind(this);
         this.componentConfig=this.componentConfig.bind(this);
         this.djsConfig=this.djsConfig.bind(this)
+        this.hndlthmbdrp=this.hndlthmbdrp.bind(this)
     }
     Submit(event){
         axios.post("https://whoami.devcamp.space/portfolio/portfolio_items",this.buildForm(),{withCredentials:true}).then(response => {
@@ -28,6 +29,11 @@ export default class Portform extends Component{
             console.log("An error occoured", error)
         })
         event.preventDefault();
+    }
+    hndlthmbdrp(){
+        return{
+            addedfile: file => this.setState({thumb_image:file})
+        };
     }
     componentConfig(){
         return{
@@ -49,6 +55,9 @@ export default class Portform extends Component{
         formData.append("portfolio_item[url]", this.state.url);
         formData.append("portfolio_item[category]", this.state.category);
         formData.append("portfolio_item[position]", this.state.position);
+        if(this.state.thumb_image){
+            formData.append("portfolio_item[thumb_image]", this.state.thumb_image);
+        }
         return formData;
     }
     Changer(event){
@@ -98,10 +107,11 @@ export default class Portform extends Component{
                     onChange={this.Changer}/>
                 </div>
                 <div className="img-Upload">
-                <DropzoneComponent
+                <DropzoneComponent 
                 config={this.componentConfig()}
-                djsConfig={this.djsConfig()}>
-                </DropzoneComponent>
+                djsConfig={this.djsConfig()}
+                eventHandlers={this.hndlthmbdrp()}
+                />
                 </div>
                 <div>
                     <button type="submit">
