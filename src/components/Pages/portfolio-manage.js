@@ -8,6 +8,14 @@ export default class Portfoliomanage extends Component{
         this.state={
             portitem:[]
         };
+        this.handleformsubmit=this.handleformsubmit.bind(this);
+        this.handleformerror=this.handleformerror.bind(this);
+    }
+    handleformsubmit(items){
+
+    }
+    handleformerror(error){
+        console.log("Submission error", error)
     }
     getitems(){
     axios.get("https://whoami.devcamp.space/portfolio/portfolio_items", {withCredentials:true}).then(response => {
@@ -26,7 +34,9 @@ export default class Portfoliomanage extends Component{
                 return (
                     <div className="port-manage-wrapper">
                     <div className="left-side">
-                        <Portform/>
+                        <Portform
+                        handleformsubmit={this.handleformsubmit}
+                        handleformerror={this.handleformerror}/>
                         </div>
                         <div className="right-side">
                         <Portside data={this.state.portitem}/>
