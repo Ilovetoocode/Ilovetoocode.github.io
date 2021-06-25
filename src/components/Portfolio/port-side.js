@@ -9,6 +9,9 @@ return(
             </div>
         <h1 className="title">{items.name}</h1>
         <h2>{items.id}</h2>
+        <a onClick={() => props.Deletebutton(items)}> 
+        Delete
+        </a>
         </div>
     </div>
 )

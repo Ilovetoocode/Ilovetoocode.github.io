@@ -10,6 +10,10 @@ export default class Portfoliomanage extends Component{
         };
         this.handleformsubmit=this.handleformsubmit.bind(this);
         this.handleformerror=this.handleformerror.bind(this);
+        this.Deletebutton=this.Deletebutton.bind(this);
+    }
+    Deletebutton(items){
+        console.log("Delete functionality test", items)
     }
     handleformsubmit(items){
     this.setState({
@@ -41,7 +45,9 @@ export default class Portfoliomanage extends Component{
                         handleformerror={this.handleformerror}/>
                         </div>
                         <div className="right-side">
-                        <Portside data={this.state.portitem}/>
+                        <Portside
+                        Deletebutton={this.Deletebutton} 
+                        data={this.state.portitem}/>
                         </div>
                     </div>
                 )
