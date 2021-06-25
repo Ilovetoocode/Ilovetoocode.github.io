@@ -15,6 +15,9 @@ export default class Portform extends Component{
             thumb_image:"",
             banner_image:"",
             logo:"",
+            edits: false,
+            api:"https://whoami.devcamp.space/portfolio/portfolio_items",
+            apires:"post"
         }
         this.Changer=this.Changer.bind(this);
         this.Submit=this.Submit.bind(this);
@@ -27,9 +30,50 @@ export default class Portform extends Component{
         this.logoref = React.createRef();
         this.bannerref = React.createRef();
     }
+    componentDidUpdate(){
+        if (Object.keys(this.props.editportfolio).length > 0){
+            const {
+                id,
+                name,
+                description,
+                category,
+                position,
+                url,
+                thumb_image_url,
+                banner_image_url,
+                logo_url,
+            }=this.props.editportfolio;
+            this.props.clearedit();
+            this.setState({
+                id: id,
+                name:name || "",
+                description: description || "",
+                category:category ||"Accomplishment",
+                position:position||"",
+                url: url||"",
+                edits: true,
+               api:`https://whoami.devcamp.space/portfolio/portfolio_items/${id}`,
+               apires:"patch",
+                thumb_image: thumb_image_url || "",
+                banner_image: banner_image_url || "",
+                logo: logo_url || "",
+
+            })
+        }
+    }
     Submit(event){
-        axios.post("https://whoami.devcamp.space/portfolio/portfolio_items",this.buildForm(),{withCredentials:true}).then(response => {
-            this.props.handleformsubmit(response.data.portfolio_item);
+        axios({
+            method:this.state.apires,
+             url:this.state.api,
+             data:this.buildForm(),
+             withCredentials:true
+        })
+        .then(response => {
+            if (this.state.edits){
+                this.props.handleeditsubmit()
+            }else{
+                this.props.handleformnewsubmit(response.data.portfolio_item)
+            }
             this.setState({
                 name:"",
                 description:"",
@@ -39,6 +83,9 @@ export default class Portform extends Component{
                 thumb_image:"",
                 banner_image:"",
                 logo:"",
+                edits: false,
+            api:"https://whoami.devcamp.space/portfolio/portfolio_items",
+            apires:"post"
             });
             [this.thumbref, this.bannerref, this.logoref].forEach(ref =>{
                 ref.current.dropzone.removeAllFiles();
@@ -141,7 +188,10 @@ export default class Portform extends Component{
                     value={this.state.description}
                     onChange={this.Changer}/>
                 </div>
-                <div className="img-Upload three-collumn">
+                <div className="img-Upload">
+                    {this.state.thumb_image && this.state.edits ? 
+                    <img src={this.state.thumb_image}/>
+                :
                 <DropzoneComponent 
                 ref={this.thumbref}
                 config={this.componentConfig()}
@@ -152,6 +202,7 @@ export default class Portform extends Component{
                         Thumbnail
                     </div>
                 </DropzoneComponent>
+    }
                < DropzoneComponent 
                ref={this.bannerref}
                 config={this.componentConfig()}

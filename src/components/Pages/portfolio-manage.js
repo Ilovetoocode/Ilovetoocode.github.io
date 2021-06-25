@@ -9,10 +9,17 @@ export default class Portfoliomanage extends Component{
             portitem:[],
             editportfolio:{}
         };
-        this.handleformsubmit=this.handleformsubmit.bind(this);
+        this.handleformnewsubmit=this.handleformnewsubmit.bind(this);
+        this.handleeditsubmit=this.handleeditsubmit.bind(this);
         this.handleformerror=this.handleformerror.bind(this);
         this.Deletebutton=this.Deletebutton.bind(this);
         this.handleedit=this.handleedit.bind(this);
+        this.clearedit=this.clearedit.bind(this);
+    }
+    clearedit(){
+        this.setState({
+            editportfolio:{}
+        })
     }
     handleedit(items){
         this.setState({
@@ -31,7 +38,10 @@ return response.data;
     console.log("Deletion error", error)
         })
     }
-    handleformsubmit(items){
+    handleeditsubmit(){
+        this.getitems();
+    }
+    handleformnewsubmit(items){
     this.setState({
         portitem: [items].concat(this.state.portitem)
     })
@@ -57,8 +67,12 @@ return response.data;
                     <div className="port-manage-wrapper">
                     <div className="left-side">
                         <Portform
-                        handleformsubmit={this.handleformsubmit}
-                        handleformerror={this.handleformerror}/>
+                        handleformnewsubmit={this.handleformnewsubmit}
+                        handleeditsubmit={this.handleeditsubmit}
+                        handleformerror={this.handleformerror}
+                        clearedit={this.clearedit}
+                        editportfolio={this.state.editportfolio}
+                        />
                         </div>
                         <div className="right-side">
                         <Portside
