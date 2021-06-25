@@ -2,6 +2,19 @@
     display: flex;
     justify-content: space-between;
     padding: 30px;
+    .Right-side{
+        a{
+            margin-left: 10px;
+            cursor: pointer;
+            color: darkmagenta;
+            transition: 0.5s ease-in-out;
+            font-size: 1em;
+            &:hover{
+                 color: $warning;
+                font-size: 1.3em;
+            }
+        }
+    }
     .Left-side{
         display: flex;
     }

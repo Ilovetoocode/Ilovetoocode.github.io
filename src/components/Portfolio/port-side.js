@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 const Portside=(props)=>{
     const Portlist= props.data.map(items =>{
@@ -7,11 +8,12 @@ return(
             <div className="sidebar_img">
                 <img src={items.thumb_image_url}/>
             </div>
-        <h1 className="title">{items.name}</h1>
-        <h2>{items.id}</h2>
-        <a onClick={() => props.Deletebutton(items)}> 
-        Delete
+            <div className="textside">
+        <div className="title">{items.name}</div>
+        <a className="deletion"onClick={() => props.Deletebutton(items)}> 
+      <FontAwesomeIcon icon="bomb"/>
         </a>
+        </div>
         </div>
     </div>
 )

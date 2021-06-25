@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import {withRouter} from "react-router";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const NavigationComponent = props => {
     const dynamLink = (route, linkText) =>{
         return(
@@ -45,7 +46,9 @@ const NavigationComponent = props => {
         </div>
         <div className="Right-side">
             Connor Walton
-            {props.loggedInState === 'in' ? <a onClick={hndllgt}>Log out</a> : null}
+            {props.loggedInState === 'in' ? <a onClick={hndllgt}>
+                <FontAwesomeIcon icon="hiking"/>
+                </a> : null}
         </div>
     </div>
     );

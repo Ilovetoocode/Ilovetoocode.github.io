@@ -13,7 +13,16 @@ export default class Portfoliomanage extends Component{
         this.Deletebutton=this.Deletebutton.bind(this);
     }
     Deletebutton(items){
-        console.log("Delete functionality test", items)
+        axios.delete(`https://api.devcamp.space/portfolio/portfolio_items/${items.id}`, {withCredentials:true}).then(response =>{
+this.setState({
+    portitem: this.state.portitem.filter(Item =>{
+        return Item.id !== items.id;
+    })
+})
+return response.data;
+}).catch(error=>{
+    console.log("Deletion error", error)
+        })
     }
     handleformsubmit(items){
     this.setState({
