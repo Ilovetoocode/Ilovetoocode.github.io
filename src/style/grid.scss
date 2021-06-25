@@ -1,15 +1,8 @@
 .one-collumn{
-display:grid;
+    @include base-grid;
 grid-template-columns: 1fr;
-grid-gap:21px;
 }
 .two-collumn{
-    display:grid;
+    @include base-grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap:21px;
-}
-.three-collumn{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap:21px;
 }

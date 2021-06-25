@@ -147,22 +147,33 @@ export default class Portform extends Component{
                 config={this.componentConfig()}
                 djsConfig={this.djsConfig()}
                 eventHandlers={this.hndlthmbdrp()}
-                />
+                >
+                    <div className="dz-message">
+                        Thumbnail
+                    </div>
+                </DropzoneComponent>
                < DropzoneComponent 
                ref={this.bannerref}
                 config={this.componentConfig()}
                 djsConfig={this.djsConfig()}
                 eventHandlers={this.handlebannerdrop()}
-                />
+                >
+                    <div className="dz-message">
+                        Banner
+                    </div>
+                </DropzoneComponent>
                 < DropzoneComponent 
                 ref={this.logoref}
                 config={this.componentConfig()}
                 djsConfig={this.djsConfig()}
                 eventHandlers={this.handlelogodrop()}
-                />
+                > <div className="dz-message">
+                Logo
+            </div>
+            </DropzoneComponent>
                 </div>
                 <div>
-                    <button type="submit">
+                    <button className="btn"type="submit">
                         Save
                         </button>
                     </div>
