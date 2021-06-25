@@ -10,9 +10,14 @@ return(
             </div>
             <div className="textside">
         <div className="title">{items.name}</div>
-        <a className="deletion"onClick={() => props.Deletebutton(items)}> 
+        <div className="actions">
+        <a className="action" onClick={() => props.handleedit(items)}>
+        <FontAwesomeIcon icon="pen-fancy"/>
+        </a>
+        <a className="action"onClick={() => props.Deletebutton(items)}> 
       <FontAwesomeIcon icon="bomb"/>
         </a>
+        </div>
         </div>
         </div>
     </div>

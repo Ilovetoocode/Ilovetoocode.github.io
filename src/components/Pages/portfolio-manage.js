@@ -6,11 +6,18 @@ export default class Portfoliomanage extends Component{
     constructor(){
         super();
         this.state={
-            portitem:[]
+            portitem:[],
+            editportfolio:{}
         };
         this.handleformsubmit=this.handleformsubmit.bind(this);
         this.handleformerror=this.handleformerror.bind(this);
         this.Deletebutton=this.Deletebutton.bind(this);
+        this.handleedit=this.handleedit.bind(this);
+    }
+    handleedit(items){
+        this.setState({
+            editportfolio: items
+        })
     }
     Deletebutton(items){
         axios.delete(`https://api.devcamp.space/portfolio/portfolio_items/${items.id}`, {withCredentials:true}).then(response =>{
@@ -56,7 +63,9 @@ return response.data;
                         <div className="right-side">
                         <Portside
                         Deletebutton={this.Deletebutton} 
-                        data={this.state.portitem}/>
+                        data={this.state.portitem}
+                        handleedit={this.handleedit}
+                        />
                         </div>
                     </div>
                 )
