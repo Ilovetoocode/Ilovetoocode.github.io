@@ -190,7 +190,9 @@ export default class Portform extends Component{
                 </div>
                 <div className="img-Upload">
                     {this.state.thumb_image && this.state.edits ? 
+                    <div className="Editing-images">
                     <img src={this.state.thumb_image}/>
+                    </div>
                 :
                 <DropzoneComponent 
                 ref={this.thumbref}
@@ -202,7 +204,12 @@ export default class Portform extends Component{
                         Thumbnail
                     </div>
                 </DropzoneComponent>
-    }
+    }            
+                    {this.state.banner_image && this.state.edits ? (
+                    <div className="Editing-images">
+                    <img src={this.state.banner_image}/>
+                    </div>
+                    ):(
                < DropzoneComponent 
                ref={this.bannerref}
                 config={this.componentConfig()}
@@ -213,6 +220,12 @@ export default class Portform extends Component{
                         Banner
                     </div>
                 </DropzoneComponent>
+                    )}
+                    {this.state.logo && this.state.edits ? (
+                    <div className="Editing-images">
+                    <img src={this.state.logo}/>
+                    </div>
+                    ):(
                 < DropzoneComponent 
                 ref={this.logoref}
                 config={this.componentConfig()}
@@ -222,6 +235,7 @@ export default class Portform extends Component{
                 Logo
             </div>
             </DropzoneComponent>
+                    )}
                 </div>
                 <div>
                     <button className="btn"type="submit">
