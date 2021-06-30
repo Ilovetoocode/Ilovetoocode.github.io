@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBomb, faHiking, faPenFancy} from "@fortawesome/free-solid-svg-icons"
+import {faBomb, faHiking, faPenFancy, faBan} from "@fortawesome/free-solid-svg-icons"
 import {BrowserRouter as Router,Switch, Route} from "react-router-dom"
 import NavigationContainer from './navigation/Navigation-Container';
 import home from "./Pages/home"
@@ -15,7 +15,7 @@ import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
 import No from"./Pages/Dead_pages/Nope";
-library.add(faBomb, faHiking, faPenFancy)
+library.add(faBomb, faHiking, faPenFancy, faBan)
 export default class App extends Component {
   constructor(props){
     super(props);

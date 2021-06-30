@@ -3,6 +3,7 @@ import axios from "axios";
 import DropzoneComponent from"react-dropzone-component"
 import "../../../node_modules/react-dropzone-component/styles/filepicker.css"
 import "../../../node_modules/dropzone/dist/min/dropzone.min.css"
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 export default class Portform extends Component{
     constructor(props){
         super(props);
@@ -32,6 +33,10 @@ export default class Portform extends Component{
         this.thumbref = React.createRef();
         this.logoref = React.createRef();
         this.bannerref = React.createRef();
+        this.delimage=this.delimage.bind(this);
+    }
+    delimage(imageType){
+        console.log("Image removed", imageType);
     }
     componentDidUpdate(){
         if (Object.keys(this.props.editportfolio).length > 0){
@@ -194,6 +199,10 @@ export default class Portform extends Component{
                     {this.state.thumb_image_url && this.state.edits ? 
                     <div className="Editing-images">
                     <img src={this.state.thumb_image_url}/>
+                    <div className="img-remove">
+                    <a onClick={()=> this.delimage("thumb_image_url")}>
+                    <FontAwesomeIcon icon="ban"/></a>
+                    </div>
                     </div>
                 :
                 <DropzoneComponent 
@@ -210,6 +219,10 @@ export default class Portform extends Component{
                     {this.state.banner_image_url && this.state.edits ? (
                     <div className="Editing-images">
                     <img src={this.state.banner_image_url}/>
+                    <div className="img-remove">
+                    <a onClick={()=> this.delimage("banner_image_url")}>
+                    <FontAwesomeIcon icon="ban"/></a>
+                    </div>
                     </div>
                     ):(
                < DropzoneComponent 
@@ -226,6 +239,10 @@ export default class Portform extends Component{
                     {this.state.logo_url && this.state.edits ? (
                     <div className="Editing-images">
                     <img src={this.state.logo_url}/>
+                    <div className="img-remove">
+                    <a onClick={()=> this.delimage("logo_url")}>
+                    <FontAwesomeIcon icon="ban"/></a>
+                    </div>
                     </div>
                     ):(
                 < DropzoneComponent 
