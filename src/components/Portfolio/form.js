@@ -15,6 +15,9 @@ export default class Portform extends Component{
             thumb_image:"",
             banner_image:"",
             logo:"",
+            thumb_image_url:"none",
+            banner_image_url:"none",
+            logo_url:"none",
             edits: false,
             api:"https://whoami.devcamp.space/portfolio/portfolio_items",
             apires:"post"
@@ -54,10 +57,9 @@ export default class Portform extends Component{
                 edits: true,
                api:`https://whoami.devcamp.space/portfolio/portfolio_items/${id}`,
                apires:"patch",
-                thumb_image: thumb_image_url || "",
-                banner_image: banner_image_url || "",
-                logo: logo_url || "",
-
+                thumb_image_url: thumb_image_url || "",
+                banner_image_url: banner_image_url || "",
+                logo_url: logo_url || "",
             })
         }
     }
@@ -189,9 +191,9 @@ export default class Portform extends Component{
                     onChange={this.Changer}/>
                 </div>
                 <div className="img-Upload">
-                    {this.state.thumb_image && this.state.edits ? 
+                    {this.state.thumb_image_url && this.state.edits ? 
                     <div className="Editing-images">
-                    <img src={this.state.thumb_image}/>
+                    <img src={this.state.thumb_image_url}/>
                     </div>
                 :
                 <DropzoneComponent 
@@ -205,9 +207,9 @@ export default class Portform extends Component{
                     </div>
                 </DropzoneComponent>
     }            
-                    {this.state.banner_image && this.state.edits ? (
+                    {this.state.banner_image_url && this.state.edits ? (
                     <div className="Editing-images">
-                    <img src={this.state.banner_image}/>
+                    <img src={this.state.banner_image_url}/>
                     </div>
                     ):(
                < DropzoneComponent 
@@ -221,9 +223,9 @@ export default class Portform extends Component{
                     </div>
                 </DropzoneComponent>
                     )}
-                    {this.state.logo && this.state.edits ? (
+                    {this.state.logo_url && this.state.edits ? (
                     <div className="Editing-images">
-                    <img src={this.state.logo}/>
+                    <img src={this.state.logo_url}/>
                     </div>
                     ):(
                 < DropzoneComponent 
