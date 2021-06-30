@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import Blogitem from "../Blogs/blgitm";
 class Blogs extends Component {
          constructor(){
              super();
@@ -24,12 +25,10 @@ class Blogs extends Component {
          }
      render(){
          const blogrecord=this.state.blogitems.map(blogitem=>
-            {
-                return <h1>{blogitem.title}</h1>;
+            { 
+          return <Blogitem key={blogitem.id} blogitem={blogitem}/>;
             });
-    return  <div>
-        {blogrecord}
-        </div>
+            return <div>{blogrecord}</div>
     }
 }
 export default Blogs;
