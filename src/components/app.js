@@ -9,7 +9,7 @@ import home from "./Pages/home"
 import Failure from"./Pages/error"
 import about from "./Pages/about"
 import Contact from "./Pages/Contact"
-import add from "./Pages/Addblog"
+import add from "./Pages/Dead_pages/Addblog"
 import portedit from "./Pages/portfolio-manage";
 import Blogs from "./Pages/Blogs"
 import PortfolioDetail from"./Portfolio/portfolio-detail";
