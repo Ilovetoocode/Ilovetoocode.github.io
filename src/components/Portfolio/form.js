@@ -36,7 +36,14 @@ export default class Portform extends Component{
         this.delimage=this.delimage.bind(this);
     }
     delimage(imageType){
-        console.log("Image removed", imageType);
+        axios.delete(`https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state
+        .id}?image_type=${imageType}`, {withCredentials:true}).then(response => {
+            this.setState({
+                [`${imageType}_url`]:""
+            })
+        }).catch(error =>{
+            console.log("An error occoured", error)
+        });
     }
     componentDidUpdate(){
         if (Object.keys(this.props.editportfolio).length > 0){
@@ -200,7 +207,7 @@ export default class Portform extends Component{
                     <div className="Editing-images">
                     <img src={this.state.thumb_image_url}/>
                     <div className="img-remove">
-                    <a onClick={()=> this.delimage("thumb_image_url")}>
+                    <a onClick={()=> this.delimage("thumb_image")}>
                     <FontAwesomeIcon icon="ban"/></a>
                     </div>
                     </div>
@@ -220,7 +227,7 @@ export default class Portform extends Component{
                     <div className="Editing-images">
                     <img src={this.state.banner_image_url}/>
                     <div className="img-remove">
-                    <a onClick={()=> this.delimage("banner_image_url")}>
+                    <a onClick={()=> this.delimage("banner_image")}>
                     <FontAwesomeIcon icon="ban"/></a>
                     </div>
                     </div>
@@ -240,7 +247,7 @@ export default class Portform extends Component{
                     <div className="Editing-images">
                     <img src={this.state.logo_url}/>
                     <div className="img-remove">
-                    <a onClick={()=> this.delimage("logo_url")}>
+                    <a onClick={()=> this.delimage("logo")}>
                     <FontAwesomeIcon icon="ban"/></a>
                     </div>
                     </div>
