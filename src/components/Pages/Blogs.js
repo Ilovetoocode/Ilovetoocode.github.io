@@ -23,13 +23,13 @@ class Blogs extends Component {
              this.getblog();
          }
      render(){
-    return(
-        <div>
-        <h2>Reading stuff</h2>
-        <div>
-        <Link to="About-me">Read more on me and my life</Link>
+         const blogrecord=this.state.blogitems.map(blogitem=>
+            {
+                return <h1>{blogitem.title}</h1>;
+            });
+    return  <div>
+        {blogrecord}
         </div>
-        </div>
-    )}
+    }
 }
 export default Blogs;
