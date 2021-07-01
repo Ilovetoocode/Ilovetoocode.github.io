@@ -11,6 +11,7 @@ export default class blogdetail extends Component {
     getpage(){
         axios.get(`https://whoami.devcamp.space/portfolio/portfolio_blogs/${this.state
         .currentid}`).then(response => {
+
         this.setState({
             blogitem:response.data.portfolio_blog
         })
@@ -23,9 +24,19 @@ export default class blogdetail extends Component {
         this.getpage();
     }
   render() {
+      const{
+      title,
+      content,
+      featured_image_url,
+      blog_status
+      } =this.state.blogitem
     return (
       <div>
-        <h1>Blog detail</h1>
+        <h1>{title}</h1>
+        <img src={featured_image_url}/>
+        <div>
+            {content}
+        </div>
       </div>
     );
   }
