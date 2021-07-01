@@ -12,6 +12,7 @@ import Contact from "./Pages/Contact"
 import add from "./Pages/Dead_pages/Addblog"
 import portedit from "./Pages/portfolio-manage";
 import Blogs from "./Pages/Blogs"
+import blogdetail from "./Pages/blog-detail";
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
 import No from"./Pages/Dead_pages/Nope";
@@ -92,6 +93,7 @@ export default class App extends Component {
          {this.state.loggedInState ==="in" ? this.Pgaccs() : null}
          <Route path="/troll" component={No}/>
          <Route path="/blog" component={Blogs}/>
+         <Route path="/b/:slug" component={blogdetail}/>
          <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
          <Route component={Failure}/>
        </Switch>
