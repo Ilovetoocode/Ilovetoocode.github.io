@@ -13,7 +13,9 @@ class Blogs extends Component {
          }
          infscroll(){
              window.onscroll = () =>{
-                 console.log("KEEP SCROLLING!")
+                if(window.innerHeight+document.documentElement.scrollTop === document.documentElement.offsetHeight){
+                    console.log("HEY! Inf scroll ain't ready bud!")
+                }
              }
          }
          getblog(){
