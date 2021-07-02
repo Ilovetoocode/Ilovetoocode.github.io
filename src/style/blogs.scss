@@ -1,0 +1,41 @@
+.Blog-page{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 800px;
+        .img-feat{
+img{
+    margin:15px, 1px;
+width: 100%;
+height: 350px;
+border-radius: 5px;
+object-fit: cover;
+}
+        }
+    }
+}
+.Blog-selector{
+    display: flex;
+    flex-direction:unset;
+    align-items: center;
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 800px;
+        a{
+            text-decoration: none;
+            color:rgb(216, 101, 210);
+            transition: 0.5s ease-in-out;
+            &:hover{
+                color: rgb(129, 25, 121);
+                font-size: 1.6em;
+            }
+        }
+        h1{
+            font-size: 1.5em;
+        }
+    }
+}

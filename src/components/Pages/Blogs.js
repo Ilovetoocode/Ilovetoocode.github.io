@@ -9,6 +9,12 @@ class Blogs extends Component {
                  blogitems:[]
              }
             this.getblog=this.getblog.bind(this);
+            this.infscroll();
+         }
+         infscroll(){
+             window.onscroll = () =>{
+                 console.log("KEEP SCROLLING!")
+             }
          }
          getblog(){
              axios.get("https://whoami.devcamp.space/portfolio/portfolio_blogs", {withCredentials:true
@@ -28,7 +34,12 @@ class Blogs extends Component {
             { 
           return <Blogitem key={blogitem.id} blogitem={blogitem}/>;
             });
-            return <div>{blogrecord}</div>
+            return(
+                <div className="Blog-selector">
+                  <div className="content">
+                  {blogrecord} </div>
+                  </div>
+            )
     }
 }
 export default Blogs;

@@ -31,11 +31,15 @@ export default class blogdetail extends Component {
       blog_status
       } =this.state.blogitem
     return (
-      <div>
+      <div className="Blog-page">
+        <div className="content">
         <h1>{title}</h1>
+        <div className="img-feat">
         <img src={featured_image_url}/>
-        <div>
+        </div>
+        <div className="content1">
             {content}
+        </div>
         </div>
       </div>
     );
