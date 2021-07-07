@@ -36,7 +36,7 @@ class Blogs extends Component {
                  if (this.state.loading || this.state.blogitems.length === this.state.count){
                      return;
                  }
-                if(window.innerHeight+document.documentElement.scrollTop === document.documentElement.offsetHeight){
+                if(window.innerHeight+Math.floor(window.scrollY) === document.documentElement.offsetHeight){
                     this.getblog();
                 }
              }
