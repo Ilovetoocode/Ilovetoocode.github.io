@@ -17,7 +17,15 @@ export default class Blogform extends Component{
         return formData;
     }
     handlesubmit(event){
-        this.props.formsubmitsuccess(this.state)
+        axios.post("https://whoami.devcamp.space/portfolio/portfolio_blogs", this.buildForm(), {withCredentials:true}).then(response => 
+        this.props.formsubmitsuccess(response.data.portfolio_blog),
+        this.setState({
+            title:"",
+            blog_status:"",
+        })
+        ).catch(error=>{
+            console.log("err", error)
+        })
         event.preventDefault();
     }
     Changer(event){

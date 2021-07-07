@@ -20,7 +20,14 @@ class Blogs extends Component {
             window.addEventListener("scroll", this.infscroll, false);
             this.handleblogclick=this.handleblogclick.bind(this);
             this.handlemodalclose=this.handlemodalclose.bind(this)
+            this.newbloghandle=this.newbloghandle.bind(this);
          }
+         newbloghandle(blog){
+            this.setState({
+                blogmodalisopen:false,
+                blogitems: [blog].concat(this.state.blogitems)
+            })
+                }
          handlemodalclose(){
              this.setState({
                  blogmodalisopen:false
@@ -46,6 +53,7 @@ class Blogs extends Component {
              })
              axios.get(`https://whoami.devcamp.space/portfolio/portfolio_blogs?page=${this.state.page}`, {withCredentials:true
             }).then(response => {
+
              this.setState({
                  blogitems: this.state.blogitems.concat(response.data.portfolio_blogs),
                  count:response.data.meta.total_records,
@@ -68,7 +76,8 @@ class Blogs extends Component {
             });
             return(
                 <div className="Blog-selector">
-                    <Modblog closemodal={this.handlemodalclose}
+                    <Modblog newbloghandle={this.newbloghandle} 
+                    closemodal={this.handlemodalclose}
                     modalopen={this.state.blogmodalisopen}/>
                     <div className="add-blog">
                         <a onClick={this.handleblogclick}>

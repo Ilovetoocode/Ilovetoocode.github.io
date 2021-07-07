@@ -21,7 +21,7 @@ export default class Modblog extends Component{
         this.formsubmitsuccess=this.formsubmitsuccess.bind(this)
     }
     formsubmitsuccess(blog){
-        console.log("blog posted", blog)
+        this.props.newbloghandle(blog);
     }
     render(){
     return (
