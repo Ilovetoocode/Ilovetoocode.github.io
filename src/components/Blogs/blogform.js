@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import axios from "axios";
 import RTE from "../forms/rte";
+import { DropzoneComponent } from "react-dropzone-component";
+import "../../../node_modules/react-dropzone-component/styles/filepicker.css";
+import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
 export default class Blogform extends Component{
     constructor(props){
         super(props);
@@ -8,10 +11,32 @@ export default class Blogform extends Component{
             title:"",
             blog_status:"",
             content:"",
+            featured_img:"",
         }
         this.Changer=this.Changer.bind(this);
         this.handlesubmit=this.handlesubmit.bind(this);
         this.rtechange=this.rtechange.bind(this);
+        this.componentConfig=this.componentConfig.bind(this);
+        this.djsConfig=this.djsConfig.bind(this);
+        this.featimgdrop=this.featimgdrop.bind(this);
+    }
+    componentConfig(){
+        return{
+            iconFiletypes:[".jpg",".png"],
+            showFiletypeIcon: true,
+            postUrl: "https://httpbin.org/post"
+        }
+    }
+    djsConfig(){
+        return{
+            addRemoveLinks: true,
+            maxFiles: 1
+        }
+    }
+    featimgdrop(){
+        return{
+            addedfile: file => this.setState({"featured_img":file})
+        }
     }
     rtechange(content){
      this.setState({content})
@@ -62,6 +87,17 @@ export default class Blogform extends Component{
             <div className="one-collumn">
                 <RTE rtechange={this.rtechange}/>
             </div>
+            <div className="img-Upload">
+            <DropzoneComponent 
+                config={this.componentConfig()}
+                djsConfig={this.djsConfig()}
+                eventHandlers={this.featimgdrop()}
+                >
+                    <div className="dz-message">
+                        Blog image
+                    </div>
+                </DropzoneComponent>
+                </div>
             <button className="btn" type="submit">Submit</button>
         </form>
     )

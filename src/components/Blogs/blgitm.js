@@ -1,5 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import Truncate from "react-truncate";
+import striptags from "striptags";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Blogitem = props =>{
 const{
 id, 
@@ -14,7 +17,7 @@ return(
         <h1>{title}</h1>
         </Link>
         <div>
-            {content}
+        <Truncate lines={1} ellipsis={<span> ... <Link to={`/b/${id}`}><FontAwesomeIcon icon="book-open"/></Link></span>}>{striptags(content)}</Truncate>
         </div>
     </div>
 )
