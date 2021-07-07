@@ -35,7 +35,8 @@ export default class Blogform extends Component{
     }
     render(){
     return (
-        <form onSubmit={this.handlesubmit}>
+        <form onSubmit={this.handlesubmit} className="blogform">
+            <div className="two-collumn">
             <input
             onChange={this.Changer} 
             type="text"
@@ -50,7 +51,8 @@ export default class Blogform extends Component{
             placeholder="status"
             value={this.state.blog_status}
             />
-            <button type="submit">Submit</button>
+            </div>
+            <button className="btn" type="submit">Submit</button>
         </form>
     )
     }

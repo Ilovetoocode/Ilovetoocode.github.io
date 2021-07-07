@@ -36,7 +36,6 @@ getPortfolioItems(){
     }
     Items(){
     return this.state.data.map(items => {
-        console.log("item data", items);
         return (
         <Item key={items.id}
            items={items}/>);

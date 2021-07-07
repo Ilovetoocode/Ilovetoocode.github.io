@@ -4,7 +4,6 @@ import axios from "axios";
 import Blogitem from "../Blogs/blgitm";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Modblog from '../Modals/blog-modal';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 class Blogs extends Component {
          constructor(){
              super();
@@ -81,7 +80,7 @@ class Blogs extends Component {
                     modalopen={this.state.blogmodalisopen}/>
                     <div className="add-blog">
                         <a onClick={this.handleblogclick}>
-                            <FontAwesomeIcon icon="plus-circle"/>
+                            <FontAwesomeIcon icon="pen"/>
                         </a>
                     </div>
                   <div className="content">

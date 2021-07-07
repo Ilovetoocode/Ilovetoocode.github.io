@@ -21,6 +21,22 @@ object-fit: cover;
     display: flex;
     flex-direction:column;
     align-items: unset;
+    position: relative;
+    .add-blog{
+        position:fixed;
+       right:0;
+        bottom:0;
+        font-size:3em;
+        a{
+            cursor: pointer;
+            color:gold;
+            margin-right: 15px;
+            transition: 0.5s ease-in-out;
+            &:hover {
+                color: goldenrod;
+            }
+        }
+    }
     .content{
         display: flex;
         flex-direction: column;
