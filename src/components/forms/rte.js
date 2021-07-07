@@ -9,6 +9,13 @@ export default class RTE extends Component{
         this.state = {
             editorState:EditorState.createEmpty()
         }
+        this.onrtchange=this.onrtchange.bind(this)
+    }
+    onrtchange(editorState){
+     this.setState({editorState}, this.props.rtechange(
+         draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
+         )
+         )
     }
     render(){
     return (
@@ -17,6 +24,7 @@ export default class RTE extends Component{
             editorState={this.state.editorState}
             wrapperClassName="demo"
             editorClassName="editor"
+            onEditorStateChange={this.onrtchange}
             />
         </div>
     )

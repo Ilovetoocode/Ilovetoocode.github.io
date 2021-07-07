@@ -7,14 +7,19 @@ export default class Blogform extends Component{
         this.state={
             title:"",
             blog_status:"",
+            content:"",
         }
         this.Changer=this.Changer.bind(this);
         this.handlesubmit=this.handlesubmit.bind(this);
+        this.rtechange=this.rtechange.bind(this);
+    }
+    rtechange(content){
+     this.setState({content})
     }
     buildForm(){
         let formData = new FormData();
         formData.append("portfolio_blog[title]", this.state.title);
-        formData.append("portfolio_item[blog_status]", this.state.blog_status);
+        formData.append("portfolio_blog[content]", this.state.content);
         return formData;
     }
     handlesubmit(event){
@@ -54,7 +59,7 @@ export default class Blogform extends Component{
             />
             </div>
             <div className="one-collumn">
-                <RTE/>
+                <RTE rtechange={this.rtechange}/>
             </div>
             <button className="btn" type="submit">Submit</button>
         </form>
