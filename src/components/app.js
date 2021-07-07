@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBomb, faHiking, faPenFancy, faBan, faCompactDisc,faPen} from "@fortawesome/free-solid-svg-icons"
 import {BrowserRouter as Router,Switch, Route} from "react-router-dom"
 import NavigationContainer from './navigation/Navigation-Container';
 import home from "./Pages/home"
@@ -16,10 +14,11 @@ import blogdetail from "./Pages/blog-detail";
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
 import No from"./Pages/Dead_pages/Nope";
-library.add(faBomb, faHiking, faPenFancy, faBan,faCompactDisc, faPen)
+import Icon from '../helper/icons';
 export default class App extends Component {
   constructor(props){
     super(props);
+    Icon();
     this.state={
      loggedInState:"Not_in"
     }
@@ -92,7 +91,10 @@ export default class App extends Component {
          />
          {this.state.loggedInState ==="in" ? this.Pgaccs() : null}
          <Route path="/troll" component={No}/>
-         <Route path="/blog" component={Blogs}/>
+         <Route path="/blog" 
+         render={props => (
+           <Blogs {...props} loggedInState={this.state.loggedInState}/>
+         )}/>
          <Route path="/b/:slug" component={blogdetail}/>
          <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
          <Route component={Failure}/>

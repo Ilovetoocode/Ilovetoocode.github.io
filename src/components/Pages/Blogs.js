@@ -78,11 +78,12 @@ class Blogs extends Component {
                     <Modblog newbloghandle={this.newbloghandle} 
                     closemodal={this.handlemodalclose}
                     modalopen={this.state.blogmodalisopen}/>
+                    {this.props.loggedInState==="in" ?
                     <div className="add-blog">
                         <a onClick={this.handleblogclick}>
                             <FontAwesomeIcon icon="pen"/>
                         </a>
-                    </div>
+                    </div> :null}
                   <div className="content">
                   {blogrecord}
                   </div>
