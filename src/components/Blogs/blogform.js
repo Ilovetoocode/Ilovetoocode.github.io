@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from "axios";
 export default class Blogform extends Component{
     constructor(props){
         super(props);
@@ -8,6 +9,12 @@ export default class Blogform extends Component{
         }
         this.Changer=this.Changer.bind(this);
         this.handlesubmit=this.handlesubmit.bind(this);
+    }
+    buildForm(){
+        let formData = new FormData();
+        formData.append("portfolio_blog[title]", this.state.title);
+        formData.append("portfolio_item[blog_status]", this.state.blog_status);
+        return formData;
     }
     handlesubmit(event){
         this.props.formsubmitsuccess(this.state)

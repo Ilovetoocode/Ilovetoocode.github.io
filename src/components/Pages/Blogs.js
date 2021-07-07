@@ -36,7 +36,7 @@ class Blogs extends Component {
                  if (this.state.loading || this.state.blogitems.length === this.state.count){
                      return;
                  }
-                if(window.innerHeight+Math.floor(window.scrollY) === document.documentElement.offsetHeight){
+                if(window.innerHeight+Math.floor(window.scrollY) <= document.documentElement.offsetHeight){
                     this.getblog();
                 }
              }
@@ -46,7 +46,6 @@ class Blogs extends Component {
              })
              axios.get(`https://whoami.devcamp.space/portfolio/portfolio_blogs?page=${this.state.page}`, {withCredentials:true
             }).then(response => {
-                console.log("Getting items", response.data)
              this.setState({
                  blogitems: this.state.blogitems.concat(response.data.portfolio_blogs),
                  count:response.data.meta.total_records,
