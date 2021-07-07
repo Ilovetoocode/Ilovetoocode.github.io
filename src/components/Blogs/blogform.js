@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import RTE from "../forms/rte";
 export default class Blogform extends Component{
     constructor(props){
         super(props);
@@ -51,6 +52,9 @@ export default class Blogform extends Component{
             placeholder="status"
             value={this.state.blog_status}
             />
+            </div>
+            <div className="one-collumn">
+                <RTE/>
             </div>
             <button className="btn" type="submit">Submit</button>
         </form>
