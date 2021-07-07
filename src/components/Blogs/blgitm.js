@@ -17,7 +17,7 @@ return(
         <h1>{title}</h1>
         </Link>
         <div>
-        <Truncate lines={1} ellipsis={<span> ... <Link to={`/b/${id}`}><FontAwesomeIcon icon="book-open"/></Link></span>}>{striptags(content)}</Truncate>
+        <Truncate lines={2} ellipsis={<span> ... <Link to={`/b/${id}`}><FontAwesomeIcon icon="book-open"/></Link></span>}>{striptags(content)}</Truncate>
         </div>
     </div>
 )

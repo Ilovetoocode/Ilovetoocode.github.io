@@ -17,6 +17,9 @@ export default class RTE extends Component{
          )
          )
     }
+    uploadFile(file){
+        console.log("file",file)
+    }
     render(){
     return (
         <div>
@@ -25,6 +28,21 @@ export default class RTE extends Component{
             wrapperClassName="demo"
             editorClassName="editor"
             onEditorStateChange={this.onrtchange}
+            toolbar= {{
+               inline:{inDropdown: true},
+               list:{inDropdown:true},
+               textAlign:{inDropdown:true},
+               Link:{inDropdown:true},
+               history:{inDropdown:true},
+               image:{
+                   uploadCallback:this.uploadFile,
+                alt:{present: true, mandatory: false},
+                 previewImage:true,
+                 inputAccept:"image/gif,image/jpeg,image/jpg,image/png,image/svg"
+                  }
+
+               }
+            }
             />
         </div>
     )
