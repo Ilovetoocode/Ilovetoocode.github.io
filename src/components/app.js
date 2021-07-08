@@ -10,7 +10,7 @@ import Contact from "./Pages/Contact"
 import add from "./Pages/Dead_pages/Addblog"
 import portedit from "./Pages/portfolio-manage";
 import Blogs from "./Pages/Blogs"
-import blogdetail from "./Pages/blog-detail";
+import Blogdetail from "./Pages/blog-detail";
 import PortfolioDetail from"./Portfolio/portfolio-detail";
 import Auth from"./Pages/auth";
 import No from"./Pages/Dead_pages/Nope";
@@ -95,7 +95,12 @@ export default class App extends Component {
          render={props => (
            <Blogs {...props} loggedInState={this.state.loggedInState}/>
          )}/>
-         <Route path="/b/:slug" component={blogdetail}/>
+         <Route 
+         path="/b/:slug" 
+         render={props=>(
+           <Blogdetail {...props} loggedinstate={this.state.loggedInState}/>
+         )}
+         />
          <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
          <Route component={Failure}/>
        </Switch>

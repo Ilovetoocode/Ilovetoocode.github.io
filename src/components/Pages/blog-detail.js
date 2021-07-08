@@ -14,6 +14,13 @@ export default class blogdetail extends Component {
         }
         this.editclick=this.editclick.bind(this)
         this.imgdel=this.imgdel.bind(this)
+        this.editsub=this.editsub.bind(this)
+    }
+    editsub(editblog){
+     this.setState({
+      blogitem:editblog,
+      editmode:false
+     })
     }
     imgdel(){
       this.setState({
@@ -23,8 +30,8 @@ export default class blogdetail extends Component {
       })
     }
     editclick(){
-      console.log("editing is, not finished :("),
-      this.setState({editmode:true})
+      if( this.props.loggedinstate==="in"){
+      this.setState({editmode:true})}
     }
     getpage(){
         axios.get(`https://whoami.devcamp.space/portfolio/portfolio_blogs/${this.state
@@ -50,7 +57,7 @@ export default class blogdetail extends Component {
       } =this.state.blogitem;
       const contentmanage=()=>{
         if(this.state.editmode){
-          return<Blogform imgdel={this.imgdel} editmode={this.state.editmode} editblog={this.state.blogitem}/>
+          return<Blogform editsub={this.editsub} imgdel={this.imgdel} editmode={this.state.editmode} editblog={this.state.blogitem}/>
         }
         else{
           return(<div className="content">

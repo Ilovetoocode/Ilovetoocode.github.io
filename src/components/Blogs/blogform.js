@@ -15,6 +15,8 @@ export default class Blogform extends Component{
             blog_status:"",
             content:"",
             featured_img:"",
+            apiUrl:"https://whoami.devcamp.space/portfolio/portfolio_blogs",
+            apiaction:"post",
             
         }
         this.Changer=this.Changer.bind(this);
@@ -39,7 +41,11 @@ export default class Blogform extends Component{
             this.setState({
                 id: this.props.editblog.id,
                 title: this.props.editblog.title,
-                status: this.props.editblog.status,
+                blog_status: this.props.editblog.blog_status,
+                content:this.props.editblog.content,
+                apiUrl:`https://whoami.devcamp.space/portfolio/portfolio_blogs/${this.props.editblog.id}`,
+                 apiaction:"patch",
+                
             })
         }
     }
@@ -75,7 +81,12 @@ export default class Blogform extends Component{
         return formData;
     }
     handlesubmit(event){
-        axios.post("https://whoami.devcamp.space/portfolio/portfolio_blogs", this.buildForm(), {withCredentials:true})
+        axios({
+            method:this.state.apiaction,
+             url:this.state.apiUrl,
+             data:this.buildForm(),
+             withCredentials:true
+        })
         .then(response => {
         if (this.state.featured_img){
             this.featimg.current.dropzone.removeAllFiles();
@@ -85,8 +96,11 @@ export default class Blogform extends Component{
             blog_status:"",
             content:"",
             featured_img:""
-        }),
-        this.props.formsubmitsuccess(response.data.portfolio_blog)}).catch(error=>{
+        });
+        if(this.props.editmode){
+      this.props.editsub(response.data.portfolio_blog)
+        }else{
+        this.props.formsubmitsuccess(response.data.portfolio_blog)}}).catch(error=>{
             console.log("err", error)
         })
         event.preventDefault();
