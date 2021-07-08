@@ -9,7 +9,9 @@ export default class RTE extends Component{
         this.state = {
             editorState:EditorState.createEmpty()
         }
-        this.onrtchange=this.onrtchange.bind(this)
+        this.onrtchange=this.onrtchange.bind(this);
+        this.B64=this.B64.bind(this);
+        this.uploadFile=this.uploadFile.bind(this);
     }
     onrtchange(editorState){
      this.setState({editorState}, this.props.rtechange(
@@ -17,8 +19,16 @@ export default class RTE extends Component{
          )
          )
     }
+    B64(file, callback){
+    let reader= new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload=()=>callback(reader.result);
+    reader.onerror=error=>{};
+    }
     uploadFile(file){
-        console.log("file",file)
+        return new Promise((resolve, reject) =>{
+            this.B64(file, data=>resolve( { data:{link:data } } ) )
+        })
     }
     render(){
     return (

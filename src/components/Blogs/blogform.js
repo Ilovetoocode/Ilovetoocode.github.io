@@ -7,7 +7,9 @@ import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
 export default class Blogform extends Component{
     constructor(props){
         super(props);
+
         this.state={
+            id:"",
             title:"",
             blog_status:"",
             content:"",
@@ -20,6 +22,15 @@ export default class Blogform extends Component{
         this.djsConfig=this.djsConfig.bind(this);
         this.featimgdrop=this.featimgdrop.bind(this);
         this.featimg = React.createRef();
+    }
+    componentDidMount(){
+        if(this.props.editmode){
+            this.setState({
+                id: this.props.editblog.id,
+                title: this.props.editblog.title,
+                status: this.props.editblog.status,
+            })
+        }
     }
     componentConfig(){
         return{
@@ -94,7 +105,12 @@ export default class Blogform extends Component{
             />
             </div>
             <div className="one-collumn">
-                <RTE rtechange={this.rtechange}/>
+                <RTE rtechange={this.rtechange}
+                editmode={this.props.editmode}
+                contentToEdit={this.props.editmode && this.props.editblog.content ?
+                    this.props.editblog.content : null
+                }
+                />
             </div>
             <div className="img-Upload">
             <DropzoneComponent 
