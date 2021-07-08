@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, convertToRaw, ContentState} from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
@@ -12,6 +12,15 @@ export default class RTE extends Component{
         this.onrtchange=this.onrtchange.bind(this);
         this.B64=this.B64.bind(this);
         this.uploadFile=this.uploadFile.bind(this);
+    }
+    componentDidMount(){
+        if(this.props.editmode && this.props.contentToEdit){
+            const blocksFromHtml=htmlToDraft(this.props.contentToEdit);
+            const{
+                contentBlocks,
+                entityMap,}=blocksFromHtml;
+                
+        }
     }
     onrtchange(editorState){
      this.setState({editorState}, this.props.rtechange(
