@@ -1,0 +1,14 @@
+.contentpage{
+    width:100vw;
+    display:grid;
+grid-template-rows:inherit;
+height:100vh;
+.bottom-row{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+
+}
+}
