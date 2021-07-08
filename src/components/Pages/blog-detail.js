@@ -13,6 +13,14 @@ export default class blogdetail extends Component {
             editmode:false,
         }
         this.editclick=this.editclick.bind(this)
+        this.imgdel=this.imgdel.bind(this)
+    }
+    imgdel(){
+      this.setState({
+        blogitem:{
+          featured_image_url:""
+        }
+      })
     }
     editclick(){
       console.log("editing is, not finished :("),
@@ -42,7 +50,7 @@ export default class blogdetail extends Component {
       } =this.state.blogitem;
       const contentmanage=()=>{
         if(this.state.editmode){
-          return<Blogform editmode={this.state.editmode} editblog={this.state.blogitem}/>
+          return<Blogform imgdel={this.imgdel} editmode={this.state.editmode} editblog={this.state.blogitem}/>
         }
         else{
           return(<div className="content">

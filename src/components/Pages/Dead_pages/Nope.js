@@ -1,5 +1,5 @@
 import React from "react";
-import YoutubeEmbed from "../../navigation/Unused_features/YTembed";
+import YoutubeEmbed from "../../Unused_features/YTembed";
 export default function(){
     return (
         <div>

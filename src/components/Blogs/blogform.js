@@ -4,6 +4,7 @@ import RTE from "../forms/rte";
 import { DropzoneComponent } from "react-dropzone-component";
 import "../../../node_modules/react-dropzone-component/styles/filepicker.css";
 import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default class Blogform extends Component{
     constructor(props){
         super(props);
@@ -14,6 +15,7 @@ export default class Blogform extends Component{
             blog_status:"",
             content:"",
             featured_img:"",
+            
         }
         this.Changer=this.Changer.bind(this);
         this.handlesubmit=this.handlesubmit.bind(this);
@@ -22,6 +24,15 @@ export default class Blogform extends Component{
         this.djsConfig=this.djsConfig.bind(this);
         this.featimgdrop=this.featimgdrop.bind(this);
         this.featimg = React.createRef();
+        this.delimage=this.delimage.bind(this);
+    }
+    delimage(imageType){
+        axios.delete(`https://api.devcamp.space/portfolio/delete-portfolio-blog-image/${this.props.editblog
+        .id}?image_type=${imageType}`, {withCredentials:true}).then(response => {
+           this.props.imgdel();
+        }).catch(error =>{
+            console.log("An error occoured", error)
+        });
     }
     componentDidMount(){
         if(this.props.editmode){
@@ -113,6 +124,13 @@ export default class Blogform extends Component{
                 />
             </div>
             <div className="img-Upload">
+                {this.props.editmode && this.props.editblog.featured_image_url ? <div className="Editing-images">
+                    <img src={this.props.editblog.featured_image_url}/>
+                    <div className="img-remove">
+                    <a onClick={()=>this.delimage("featured_image")}>
+                    <FontAwesomeIcon icon="ban"/></a>
+                    </div>
+                    </div>:
             <DropzoneComponent 
             ref={this.featimg}
                 config={this.componentConfig()}
@@ -123,6 +141,7 @@ export default class Blogform extends Component{
                         Blog image
                     </div>
                 </DropzoneComponent>
+    }
                 </div>
             <button className="btn" type="submit">Submit</button>
         </form>
