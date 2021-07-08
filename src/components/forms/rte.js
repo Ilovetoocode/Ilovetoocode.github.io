@@ -19,7 +19,9 @@ export default class RTE extends Component{
             const{
                 contentBlocks,
                 entityMap,}=blocksFromHtml;
-                
+                const contentState=ContentState.createFromBlockArray(contentBlocks, entityMap);
+                const editorState=EditorState.createWithContent(contentState);
+                this.setState({editorState})
         }
     }
     onrtchange(editorState){
