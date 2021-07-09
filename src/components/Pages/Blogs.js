@@ -20,6 +20,19 @@ class Blogs extends Component {
             this.handleblogclick=this.handleblogclick.bind(this);
             this.handlemodalclose=this.handlemodalclose.bind(this)
             this.newbloghandle=this.newbloghandle.bind(this);
+            this.blogdelete=this.blogdelete.bind(this);
+         }
+         blogdelete(blog){
+            axios.delete(`https://api.devcamp.space/portfolio/portfolio_blogs/${blog.id}`, {withCredentials:true}).then(response =>{
+                this.setState({
+                   blogitems:this.state.blogitems.filter(blogitem =>{
+                     return blog.id != blogitem.id
+                   })
+                })
+                return response.data;
+                }).catch(error=>{
+                    console.log("Deletion error", error)
+                        })
          }
          newbloghandle(blog){
             this.setState({
@@ -71,7 +84,18 @@ class Blogs extends Component {
      render(){
          const blogrecord=this.state.blogitems.map(blogitem=>
             { 
-          return <Blogitem key={blogitem.id} blogitem={blogitem}/>;
+                if(this.props.loggedInState==="in"){
+                    return(
+                        <div key={blogitem.id} className="admin">
+                            <Blogitem blogitem={blogitem}/>
+                            <a className="action" onClick={()=> this.blogdelete(blogitem)}>
+                                <FontAwesomeIcon  icon="bomb"/>
+                            </a>
+                        </div>
+                    )
+                }else{
+                    return <Blogitem key={blogitem.id} blogitem={blogitem}/>;
+                }
             });
             return(
                 <div className="Blog-selector">

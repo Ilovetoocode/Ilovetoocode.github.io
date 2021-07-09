@@ -17,23 +17,26 @@ this.getPortfolioItems=this.getPortfolioItems.bind(this)
     handleFilter(filter){
         if(filter === "clear"){
             this.getPortfolioItems();
-        }
+        }else
         {
-        this.setState({
-        data: this.state.data.filter(items => {
-            return items.category === filter;
-        })
-         })
+            this.getPortfolioItems(filter);
         }
 }
-getPortfolioItems(){
+getPortfolioItems(filter=null){
     axios
     .get("https://whoami.devcamp.space/portfolio/portfolio_items")
     .then(response => {
-    console.log("response data", response);
-    this.setState({
-        data: response.data.portfolio_items
-    })
+        if(filter){
+            this.setState({
+                data: response.data.portfolio_items.filter(items => {
+                    return items.category === filter;
+                })
+        })
+        } else{
+            this.setState({
+                data: response.data.portfolio_items
+        })
+    }
     })
     .catch(error => {
     console.log(error);

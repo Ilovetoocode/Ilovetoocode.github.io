@@ -10,5 +10,19 @@
         justify-content: center;
         align-items: center;
        background-color: rgba(40, 161, 121, 0.329);
+       .auth-form{
+           @include input-element();
+           @include base-grid();
+           grid-gap:32px;
+           padding:42px;
+          .authitems{
+              display: flex;
+              svg{
+                  font-size: 2em;
+                  color:cornsilk;
+                  margin-right: 15px;
+              }
+          }
+       }
     }
 }

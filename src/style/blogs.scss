@@ -34,6 +34,21 @@ object-fit: cover;
     flex-direction:column;
     align-items: unset;
     position: relative;
+    .admin{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .action{
+            color:coral;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: 0.5s ease-in-out;
+            &:hover{
+                color: crimson;
+                font-size: 2.0em;
+            }
+            }
+    }
     .add-blog{
         position:fixed;
        right:0;
