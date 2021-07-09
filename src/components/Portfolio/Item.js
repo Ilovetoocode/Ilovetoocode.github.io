@@ -17,6 +17,7 @@ this.setState({PorfolioitemClass:'img-blur'})
     render() {
     const{id, description, thumb_image_url, logo_url}=this.props.items;
     return(
+        <Link to={`/portfolio/${id}`}>
          <div className="portfolio-item-wrap"
          onMouseEnter={()=> this.handleMouseEnt()}
         onMouseLeave={()=> this.handleMouseExt()}
@@ -33,6 +34,7 @@ this.setState({PorfolioitemClass:'img-blur'})
                  <div className="subtitle">{description}</div>
              </div>
              </div>
+             </Link>
     );
             }
 }

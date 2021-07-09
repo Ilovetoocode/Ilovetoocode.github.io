@@ -15,11 +15,16 @@ this.getPortfolioItems=this.getPortfolioItems.bind(this)
     }
     
     handleFilter(filter){
+        if(filter === "clear"){
+            this.getPortfolioItems();
+        }
+        {
         this.setState({
         data: this.state.data.filter(items => {
             return items.category === filter;
         })
          })
+        }
 }
 getPortfolioItems(){
     axios
@@ -49,11 +54,16 @@ getPortfolioItems(){
             return <div>Loading...</div>
         }
         return (
-                <div className="portfolio-items-wrap">
+            <div className="home">
+                <div className="filters">
                 <button className="btn" onClick={() => this.handleFilter('Real life')}>IRL</button>
                 <button className="btn" onClick={() => this.handleFilter('Web Stuff')}>Web stuff</button>
                 <button className="btn" onClick={() => this.handleFilter('Accomplishment')}>Awards</button>
+                <button className="btn" onClick={() => this.handleFilter('clear')}>All</button>
+                </div>
+                <div className="portfolio-items-wrap">
                 {this.Items()}
+                </div>
                 </div>
         )
     }

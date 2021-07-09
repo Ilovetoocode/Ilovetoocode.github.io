@@ -1,0 +1,11 @@
+.home{
+    display:grid;
+    grid-template-columns: 1fr;
+    .filters{
+        display: flex;
+        justify-content: center;
+        .btn{
+            width: 100%;
+        }
+    }
+}
